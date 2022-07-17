@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="robokit_ros2_control" params="port baud timeout">
+    <ros2_control name="RobokitHardware" type="system">
+      <hardware>
+          <plugin>robokit_hardware/RobokitHardwareInterface</plugin>
+          <param name="port">     ${port}    </param>
+          <param name="baudrate"> ${baud}    </param>
+          <param name="timeout">  ${timeout} </param>
+      </hardware>
+
+      <xacro:macro name="configure_joint" params="joint_name id sio">
+        <joint name="${joint_name}">
+          <param name="id">  ${id}  </param>
+          <param name="sio"> ${sio} </param>
+          <command_interface name="position"/>
+          <state_interface name="position"/>
+        </joint>
+      </xacro:macro>
+
+      <xacro:configure_joint joint_name="pelvis_yaw"           id="0"  sio="2"/>
+      <xacro:configure_joint joint_name="left_hip_yaw"         id="5"  sio="1"/>
+      <xacro:configure_joint joint_name="left_hip_roll"        id="6"  sio="1"/>
+      <xacro:configure_joint joint_name="left_hip_pitch"       id="7"  sio="1"/>
+      <xacro:configure_joint joint_name="left_knee"            id="8"  sio="1"/>
+      <xacro:configure_joint joint_name="left_ankle_pitch"     id="9"  sio="1"/>
+      <xacro:configure_joint joint_name="left_ankle_roll"      id="10" sio="1"/>
+      <xacro:configure_joint joint_name="right_hip_yaw"        id="5"  sio="2"/>
+      <xacro:configure_joint joint_name="right_hip_roll"       id="6"  sio="2"/>
+      <xacro:configure_joint joint_name="right_hip_pitch"      id="7"  sio="2"/>
+      <xacro:configure_joint joint_name="right_knee"           id="8"  sio="2"/>
+      <xacro:configure_joint joint_name="right_ankle_pitch"    id="9"  sio="2"/>
+      <xacro:configure_joint joint_name="right_ankle_roll"     id="10" sio="2"/>
+      <xacro:configure_joint joint_name="right_shoulder_pitch" id="1"  sio="2"/>
+      <xacro:configure_joint joint_name="right_shoulder_roll"  id="2"  sio="2"/>
+      <xacro:configure_joint joint_name="right_shoulder_twirl" id="3"  sio="2"/>
+      <xacro:configure_joint joint_name="right_elbow_pitch"    id="4"  sio="2"/>
+      <xacro:configure_joint joint_name="left_shoulder_pitch"  id="1"  sio="2"/>
+      <xacro:configure_joint joint_name="left_shoulder_roll"   id="2"  sio="1"/>
+      <xacro:configure_joint joint_name="left_shoulder_twirl"  id="3"  sio="1"/>
+      <xacro:configure_joint joint_name="left_elbow_pitch"     id="4"  sio="1"/>
+      <xacro:configure_joint joint_name="head_yaw"             id="0"  sio="1"/>
+      <xacro:configure_joint joint_name="head_pitch"           id="12" sio="2"/>
+
+    </ros2_control>
+  </xacro:macro>
+
+  <xacro:robokit_ros2_control port="/dev/pts/1" baud="38400" timeout="1"/>
+
+</robot>

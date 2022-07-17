@@ -1,0 +1,54 @@
+#VRML_SIM R2022a utf8
+WorldInfo {
+  info [
+    "Description: Starkit's SimulCup KidSize Archery training field for Robokit-atom robot"
+    "Version 0.1"
+  ]
+  title "Archery training"
+  basicTimeStep 5
+  physicsDisableTime 0.1
+  physicsDisableLinearThreshold 0.1
+  physicsDisableAngularThreshold 0.1
+  contactProperties [
+    ContactProperties {
+      material1 "grass"
+      coulombFriction [
+        0.5
+      ]
+      softCFM 0.03
+    }
+    ContactProperties {
+      material1 "grass"
+      material2 "robocup soccer ball"
+      coulombFriction [
+        0.5
+      ]
+      bounce 0.76
+      softCFM 0.05
+    }
+    ContactProperties {
+      material2 "robocup soccer ball"
+      bounce 0.76
+    }
+  ]
+}
+Viewpoint {
+  orientation -0.11927577077895382 0.29315159346292236 0.9485965600587195 0.8482471633871708
+  position -0.8582396528068141 -1.3621628076106789 0.6675373618270941
+}
+TexturedBackground {
+  texture "stadium_dry"
+}
+TexturedBackgroundLight {
+  texture "stadium_dry"
+}
+DEF Field ArcheryField {
+}
+DEF RED_PLAYER_1 Robokit1 {
+  translation -0.1 0 0.288354
+  name "archer"
+  controller "ros"
+}
+DEF Target ArcheryTarget {
+  translation 1.55 0 0.28
+}

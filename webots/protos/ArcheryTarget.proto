@@ -1,0 +1,77 @@
+#VRML_SIM R2021b utf8
+# license: Apache License 2.0
+# license url: http://www.apache.org/licenses/LICENSE-2.0
+# Official soccer field for the Robocup Humanoid League 2021.
+
+PROTO ArcheryTarget [
+  field SFVec3f                     translation 0 0 0
+  field SFRotation                  rotation    0 1 0 1.57
+  field SFString                    name        "target" 
+]
+{
+
+  %{
+
+    B = 0.5
+    D = 0.3
+    E = 0.1
+    F = 0.3
+    G = 0.5
+
+  }%
+  
+  DEF Target Solid{
+    translation IS translation
+    rotation IS rotation
+    children [
+    
+      DEF BOARD Shape {
+        geometry Box {
+          size %{=G}% %{=G}% 0.05
+        }
+        appearance Plastic {
+          colorOverride 1 1 1
+        } 
+      }
+      
+      DEF CIRCLE_BIG Shape {
+        geometry Cylinder {
+          radius %{=G/2}%
+          height 0.051
+        }
+        appearance Plastic {
+          colorOverride 0 0 1
+        }
+      }
+      
+      DEF CIRCLE_MED Shape {
+        geometry Cylinder {
+          radius %{=F/2}%
+          height 0.052
+        }
+        appearance Plastic {
+          colorOverride 1 1 0
+        }
+      }
+      
+      DEF CIRCLE_MED Shape {
+        geometry Cylinder {
+          radius %{=E/2}%
+          height 0.053
+        }
+        appearance Plastic {
+          colorOverride 1 0 0
+        }
+      }
+      
+    ]
+    
+    
+    boundingObject Shape {
+      geometry Box {
+        size %{=G}% %{=G}% 0.05
+      }
+    }
+  }
+  
+}

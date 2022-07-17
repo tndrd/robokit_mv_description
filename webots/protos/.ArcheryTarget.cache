@@ -1,0 +1,11 @@
+Webots Proto Cache File version 1.5
+protoFileHash: 8886ed0641948119bdd9994aef230ea6
+needsRobotAncestor: 0
+baseType: Solid
+slotType: 
+parameters: translation,rotation,name
+tags: 
+license:  Apache License 2.0
+licenseUrl:  http://www.apache.org/licenses/LICENSE-2.0
+documentationUrl: 
+info: Official\ssoccer\sfield\sfor\sthe\sRobocup\sHumanoid\sLeague\s2021.

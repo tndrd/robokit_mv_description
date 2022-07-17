@@ -1,0 +1,100 @@
+#VRML_SIM R2021b utf8
+# license: Apache License 2.0
+# license url: http://www.apache.org/licenses/LICENSE-2.0
+# Official soccer field for the Robocup Humanoid League 2021.
+
+PROTO ArcheryField [
+  field SFVec3f                     translation 0 0 0
+  field SFRotation                  rotation    0 1 0 0
+  field SFString                    name        "archery_range"
+  field SFString{"adult", "kid", "junior"}    size        "junior"  
+  field SFBool                      turfPhysics FALSE
+  field SFBool                      coloredPosts TRUE  
+]
+{
+
+  %{
+    -- Soccer field for Elsiros (Humanoid Junior)
+
+    LINE_WIDTH = 0.05 -- Line width
+    
+    FIELD_L = 4
+    FIELD_W = 3
+    
+    BASE_L = 0.5
+
+    A = 1.5
+    B = 0.5
+    C = 0.8
+    D = 0.3
+    E = 0.1
+    F = 0.3
+    G = 0.5
+
+  }%
+
+  DEF Field Solid {
+    translation IS translation
+    rotation IS rotation
+    locked TRUE
+    children [
+      DEF GRASS Shape {
+        appearance DEF GREEN_APPEARANCE CarpetFibers {
+          colorOverride    0 1 0
+          type             "synthetic"
+          textureTransform TextureTransform {
+            scale %{= FIELD_L }% %{= FIELD_L }%
+          }
+          IBLStrength      1.0
+        }        
+        geometry Plane {
+            size %{= FIELD_L * 2}% %{= FIELD_W * 2}%
+          }
+      }
+      
+      Transform{
+        translation %{= -(BASE_L + LINE_WIDTH * 2) / 2}% 0 0.001
+        rotation 1 0 0 %{= (3.14/180) * 90}%
+        children [
+           DEF LINE_RANGE_L Shape {
+            geometry Plane {
+              size %{=BASE_L + LINE_WIDTH * 2}% %{=C + LINE_WIDTH * 2}%
+            }
+            appearance Plastic {
+              colorOverride 1 1 1
+            }
+          } 
+        ]
+      
+      }
+      
+      Transform{
+        translation %{= -(BASE_L + LINE_WIDTH * 2) / 2}% 0 0.0015
+        rotation 1 0 0 %{= (3.14/180) * 90}%
+        children [
+          DEF GRASS Shape {
+            appearance DEF GREEN_APPEARANCE CarpetFibers {
+            colorOverride    0 1 0
+            type             "synthetic"
+            textureTransform TextureTransform {
+              scale %{= BASE_L }% %{= BASE_L }%
+            }
+            IBLStrength      1.0
+            }        
+            geometry Plane {
+              size %{= BASE_L}% %{= C }%
+            }
+          } 
+        ]
+      
+      }
+      
+    ]
+    boundingObject Shape {
+          geometry Plane {
+            size %{= FIELD_L * 2}% %{= FIELD_W }%
+          }
+        }
+    }
+  
+}
