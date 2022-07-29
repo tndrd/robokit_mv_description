@@ -1,19 +1,22 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <xacro:macro name="robokit_ros2_control" params="port baud timeout">
+  <xacro:macro name="robokit_ros2_control" params="port baudrate timeout">
     <ros2_control name="RobokitHardware" type="system">
       <hardware>
-          <plugin>robokit_hardware/RobokitHardwareInterface</plugin>
-          <param name="port">     ${port}    </param>
-          <param name="baudrate"> ${baud}    </param>
-          <param name="timeout">  ${timeout} </param>
+          <plugin>robokit_hardware/RobokitHardware</plugin>
+          <param name="port">${port}</param>
+          <param name="baudrate">${baudrate}</param>
+          <param name="timeout">${timeout} </param>
       </hardware>
 
+      <xacro:property name="config_path" value="$(env DESCRIPTION_PATH)/config/servos.yaml"/>
+      <xacro:property name="config" value="${load_yaml(config_path)}"/>
+      
       <xacro:macro name="configure_joint" params="joint_name id sio">
         <joint name="${joint_name}">
-          <param name="id">  ${id}  </param>
-          <param name="sio"> ${sio} </param>
+          <param name="id">  ${config['${joint_name}']['id']} </param>
+          <param name="sio"> ${config['${joint_name}']['id']} </param>
           <command_interface name="position"/>
           <state_interface name="position"/>
         </joint>
@@ -45,7 +48,7 @@
 
     </ros2_control>
   </xacro:macro>
-
-  <xacro:robokit_ros2_control port="/dev/pts/1" baud="38400" timeout="1"/>
+  
+  <xacro:robokit_ros2_control port="ppp" baudrate="bbb" timeout="ttt"/>
 
 </robot>

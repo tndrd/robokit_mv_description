@@ -1,0 +1,69 @@
+pelvis_yaw:
+  id: 0
+  sio: 2
+left_hip_yaw:
+  id: 5
+  sio: 1
+left_hip_roll:
+  id: 6
+  sio: 1
+left_hip_pitch:
+  id: 7
+  sio: 1
+left_knee:
+  id: 8
+  sio: 1
+left_ankle_pitch:
+  id: 9
+  sio: 1
+left_ankle_roll:
+  id: 10
+  sio: 1
+right_hip_yaw:
+  id: 5
+  sio: 2
+right_hip_roll:
+  id: 6
+  sio: 2
+right_hip_pitch:
+  id: 7
+  sio: 2
+right_knee:
+  id: 8
+  sio: 2
+right_ankle_pitch:
+  id: 9
+  sio: 2
+right_ankle_roll:
+  id: 10
+  sio: 2
+right_shoulder_pitch:
+  id: 1
+  sio: 2
+right_shoulder_roll:
+  id: 2
+  sio: 2
+right_shoulder_twirl:
+  id: 3
+  sio: 2
+right_elbow_pitch:
+  id: 4
+  sio: 2
+left_shoulder_pitch:
+  id: 1
+  sio: 2
+left_shoulder_roll:
+  id: 2
+  sio: 1
+left_shoulder_twirl:
+  id: 3
+  sio: 1
+left_elbow_pitch:
+  id: 4
+  sio: 1
+head_yaw:
+  id: 0
+  sio: 1
+head_pitch:
+  id: 12
+  sio: 2

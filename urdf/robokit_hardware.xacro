@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <xacro:macro name="robokit_ros2_control" params="port baud timeout">
+  <xacro:macro name="robokit_ros2_control" params="port baudrate timeout">
     <ros2_control name="RobokitHardware" type="system">
       <hardware>
-          <plugin>robokit_hardware/RobokitHardwareInterface</plugin>
-          <param name="port">     ${port}    </param>
-          <param name="baudrate"> ${baud}    </param>
-          <param name="timeout">  ${timeout} </param>
+          <plugin>robokit_hardware/RobokitHardware</plugin>
+          <param name="port">${port}</param>
+          <param name="baudrate">${baudrate}</param>
+          <param name="timeout">${timeout} </param>
       </hardware>
 
       <xacro:macro name="configure_joint" params="joint_name id sio">

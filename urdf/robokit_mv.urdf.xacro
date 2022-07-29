@@ -6,7 +6,7 @@
     
     <xacro:arg name="use_sim" default="true"/>
     <xacro:arg name="port"    default="none"/>
-    <xacro:arg name="baud"    default="none"/>
+    <xacro:arg name="baudrate"    default="none"/>
     <xacro:arg name="timeout" default="none"/>
 
     <!--> Hardware setup (webots or real) <!-->
@@ -15,7 +15,7 @@
     </xacro:if>
     <xacro:unless value="$(arg use_sim)">
       <xacro:include filename="robokit_hardware.xacro"/>
-      <xacro:robokit_ros2_control port="$(arg port)" baud="$(arg baud)" timeout="$(arg timeout)"/>
+      <xacro:robokit_ros2_control port="$(arg port)" baudrate="$(arg baudrate)" timeout="$(arg timeout)"/>
     </xacro:unless>    
 
     <link
